@@ -2,81 +2,41 @@ import { Link } from 'react-router-dom';
 
 function Footer() {
   return (
-    <footer className="bg-[#1e293b] border-t border-[#334155]">
-      <div className="max-w-7xl mx-auto py-12">
-        {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-
-          {/* Column 1: Logo & Description */}
-          <div className="text-center col-span-3 md:text-left">
-            <Link
-              to="/"
-              className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#3eddfd] to-white bg-clip-text text-transparent mb-4 inline-block hover:opacity-80 transition-opacity"
-              style={{ fontFamily: '"Orbitron", sans-serif' }}
-            >
-              Innermost
-            </Link>
-            <p className="text-[#94a3b8] text-sm leading-relaxed">
-              Private FX Matching with AI Market Making on Midnight
-            </p>
-          </div>
-
-          {/* Column 2: Quick Links */}
-          <div className="text-center md:text-left">
-            <h3 className="text-[#f8fafc] font-semibold mb-4 text-lg">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  to="/swap"
-                  className="text-[#94a3b8] hover:text-[#3eddfd] transition-colors text-sm"
-                >
-                  Swap
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/liquidity"
-                  className="text-[#94a3b8] hover:text-[#3eddfd] transition-colors text-sm"
-                >
-                  Liquidity
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/tokens"
-                  className="text-[#94a3b8] hover:text-[#3eddfd] transition-colors text-sm"
-                >
-                  Tokens
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="https://github.com/pisuthd/innermost"
-                  className="text-[#94a3b8] hover:text-[#3eddfd] transition-colors text-sm"
-                >
-                  GitHub
-                </Link>
-              </li>
-            </ul>
-          </div>
+    <footer
+      style={{
+        padding: '24px 56px',
+        borderTop: '1px solid rgba(180,200,255,0.08)',
+        position: 'relative',
+        zIndex: 10,
+      }}
+    >
+      <div style={{ maxWidth: 1200, margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        {/* Logo & Description on same line */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <Link
+            to="/"
+            className="text-base md:text-lg mb-1 font-bold bg-gradient-to-r from-[#3eddfd] to-white bg-clip-text text-transparent hover:opacity-80 transition-opacity"
+            style={{ fontFamily: "'Orbitron', sans-serif", textDecoration: 'none', whiteSpace: 'nowrap' }}
+          >
+            Innermost
+          </Link>
+          <span style={{
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: 12,
+            color: 'rgba(180,200,255,0.5)',
+          }}>
+            Privacy-First Orderbook with AI Market Makers
+          </span>
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-[#334155] mb-6"></div>
-
-        {/* Bottom Row: Social Links, Hackathon Badge & Copyright */}
-        <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-4">
-          {/* GitHub Link */}
-          <div className="flex items-center gap-4">
-            <p className="text-[#94a3b8] text-sm">
-              Made with ❤️ during <a className='text-[#3eddfd] font-semibold' href="https://www.risein.com/programs/into-the-midnight-hackathon">INTO The MIDNIGHT</a>
-            </p>
-          </div>
-          <div className="text-center md:text-right">
-            <p className="text-[#94a3b8] text-sm mb-1">
-              © 2026 <a className='text-[#3eddfd] font-semibold' href="https://tamagolabs.com">Tamago Labs Japan</a>
-            </p>
-          </div>
+        {/* Links & Copyright */}
+        <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
+          <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: 'rgba(180,200,255,0.5)', cursor: 'pointer' }}>Privacy</span>
+          <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: 'rgba(180,200,255,0.5)', cursor: 'pointer' }}>Terms</span>
+          <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: 'rgba(180,200,255,0.5)', cursor: 'pointer' }}>Contact</span>
+          <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: 'rgba(180,200,255,0.5)', margin: 0 }}>
+            © 2026 Tamago Labs Japan
+          </span>
         </div>
       </div>
     </footer>

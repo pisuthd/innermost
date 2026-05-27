@@ -55,12 +55,12 @@ function Hero() {
 
               {/* Main Headline */}
               <h1 className="mb-6 leading-tight text-white" style={{ fontSize: '48px', fontWeight: 300, letterSpacing: '-0.02em', lineHeight: 1.1 }}>
-                Privacy-First FX Matching with AI Market Making
+                Shielded CLOB Trading with Intelligent Liquidity
               </h1>
 
               {/* Subheadline */}
               <p className="text-base mb-10 text-[rgba(180,200,255,0.6)]" style={{ fontFamily: "'DM Sans', sans-serif", lineHeight: 1.6 }}>
-                AI-powered market makers deliver optimal rates and deep liquidity — slippage-free, front-running-proof atomic execution
+               Traders get simple, private, slippage-free execution. Market makers run local AI agents for dynamic ladders, inventory management, and optimal spreads
               </p>
 
               {/* CTA Buttons */}
@@ -83,7 +83,7 @@ function Hero() {
                     display: 'inline-block',
                   }}
                 >
-                  START PRIVATE SWAP
+                  START TRADING
                 </Link>
                 <Link
                   to="/market-make"
