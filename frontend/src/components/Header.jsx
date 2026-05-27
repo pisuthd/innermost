@@ -115,11 +115,16 @@ function Header() {
                 opacity: isLoading ? 0.5 : 1,
               }}
             >
-              {isLoading ? 'CONNECTING...' : 'CONNECT WALLET'}
+              {isLoading ? 'CONNECTING LACE...' : 'CONNECT WALLET'}
             </button>
           )}
         </div>
       </nav>
+
+      <WalletInfoModal
+        isOpen={isWalletInfoOpen}
+        onClose={() => setIsWalletInfoOpen(false)}
+      />
     </header>
   );
 }
