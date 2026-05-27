@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import ComingSoonModal from '../components/ComingSoonModal';
 import { useWallet } from '../context/WalletContext';
 import { checkHealth, getOrders, createOrder, cancelOrder, matchOrders } from '../services/api';
 import { getCurrentPrices, formatPrice, priceToContract } from '../services/fx-prices';
@@ -9,6 +10,7 @@ const PAIRS = ['USD/EUR', 'USD/JPY', 'EUR/JPY'];
 
 function Trade() {
   const { isConnected, isLoading: walletLoading, connectWallet } = useWallet();
+  const [showComingSoon, setShowComingSoon] = useState(true);
   const [backendReady, setBackendReady] = useState(false);
   const [backendChecking, setBackendChecking] = useState(true);
 
@@ -568,6 +570,9 @@ function Trade() {
             </div>
           </div>
         )}
+
+        {/* Coming Soon Modal */}
+        <ComingSoonModal isOpen={showComingSoon} onClose={() => setShowComingSoon(false)} />
       </main>
       <Footer />
     </div>

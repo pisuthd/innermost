@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import ComingSoonModal from '../components/ComingSoonModal';
 import { useWallet } from '../context/WalletContext';
 import { checkHealth, getBalances, getWalletInfo, mintToken } from '../services/api';
 
@@ -24,6 +25,7 @@ function formatTokenAmount(rawStr, decimals = 6) {
 
 function Tokens() {
   const { isConnected, isLoading: walletLoading, connectWallet } = useWallet();
+  const [showComingSoon, setShowComingSoon] = useState(true);
   const [backendReady, setBackendReady] = useState(false);
   const [backendChecking, setBackendChecking] = useState(true);
   const [balances, setBalances] = useState({ USD: '0', EUR: '0', JPY: '0' });
@@ -344,6 +346,9 @@ function Tokens() {
             </div>
           </section>
         )}
+
+        {/* Coming Soon Modal */}
+        <ComingSoonModal isOpen={showComingSoon} onClose={() => setShowComingSoon(false)} />
       </main>
       <Footer />
     </div>

@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import ComingSoonModal from '../components/ComingSoonModal';
 import { useWallet } from '../context/WalletContext';
 import { checkHealth, getOrders, createOrderBatch, cancelOrder } from '../services/api';
 import { getCurrentPrices, formatPrice } from '../services/fx-prices';
@@ -11,6 +12,7 @@ const RISK_LEVELS = ['conservative', 'moderate', 'aggressive'];
 
 function MarketMake() {
   const { isConnected, isLoading: walletLoading, connectWallet } = useWallet();
+  const [showComingSoon, setShowComingSoon] = useState(true);
   const [backendReady, setBackendReady] = useState(false);
   const [backendChecking, setBackendChecking] = useState(true);
 
@@ -528,6 +530,9 @@ function MarketMake() {
             </div>
           </section>
         )}
+
+        {/* Coming Soon Modal */}
+        <ComingSoonModal isOpen={showComingSoon} onClose={() => setShowComingSoon(false)} />
       </main>
       <Footer />
     </div>
