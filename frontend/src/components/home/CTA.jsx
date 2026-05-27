@@ -1,28 +1,80 @@
 import { Link } from 'react-router-dom';
 
 function CTA() {
-    return (
-        <section className="py-24 px-4 md:px-8 bg-gradient-to-b from-[#1e293b] to-[#0f172a]">
-            <div className="max-w-3xl mx-auto text-center">
+  return (
+    <section 
+      className="relative py-20 md:py-32 px-4 md:px-8"
+      style={{ 
+        padding: '80px 56px',
+        textAlign: 'center',
+        borderTop: '1px solid rgba(180,200,255,0.08)',
+        position: 'relative',
+        zIndex: 10,
+      }}
+    >
+      <h2 style={{
+        fontFamily: "'DM Sans', sans-serif",
+        fontSize: '32px',
+        fontWeight: 400,
+        color: '#fff',
+        marginBottom: '32px',
+      }}>
+        Ready to Trade Privately on <strong style={{ fontWeight: 500, color: '#3eddfd' }}>Midnight</strong>?
+      </h2>
 
-                {/* Headline */}
-                <h2 className="text-3xl md:text-4xl lg:text-4xl font-bold mb-6 text-[#f8fafc] tracking-tight">
-                    Ready to Get Started?
-                </h2>
+      <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', marginBottom: '16px' }}>
+        <Link
+          to="/trade"
+          style={{
+            padding: '16px 32px',
+            background: '#3eddfd',
+            border: 'none',
+            borderRadius: 12,
+            fontFamily: "'Space Mono', monospace",
+            fontSize: 14,
+            fontWeight: 700,
+            color: '#000',
+            cursor: 'pointer',
+            letterSpacing: '0.05em',
+            transition: 'all 0.3s ease',
+            textDecoration: 'none',
+          }}
+        >
+          START TRADING
+        </Link>
 
-                {/* Subtle decorative line */}
-                <div className="w-16 h-1 bg-[#3eddfd] mx-auto mb-8" />
+        <Link
+          to="/market-make"
+          style={{
+            padding: '16px 32px',
+            background: 'rgba(255,255,255,0.04)',
+            backdropFilter: 'blur(20px)',
+            border: '1px solid rgba(180,200,255,0.12)',
+            borderRadius: 12,
+            fontFamily: "'Space Mono', monospace",
+            fontSize: 14,
+            fontWeight: 700,
+            color: '#fff',
+            cursor: 'pointer',
+            letterSpacing: '0.05em',
+            transition: 'all 0.3s ease',
+            textDecoration: 'none',
+          }}
+        >
+          BECOME A MARKET MAKER
+        </Link>
+      </div>
 
-
-                {/* CTA Button */}
-                <Link to="/dashboard">
-                    <button className="px-8 py-4 bg-[#3eddfd] hover:bg-[#2dd4d4] text-[#0f172a] font-bold text-lg rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(62,223,223,0.3)] hover:shadow-[0_0_30px_rgba(62,223,223,0.5)]">
-                        Go to Dashboard
-                    </button>
-                </Link>
-            </div>
-        </section>
-    );
+      <p style={{
+        fontFamily: "'DM Sans', sans-serif",
+        fontSize: '13px',
+        color: 'rgba(180,200,255,0.5)',
+        margin: 0,
+      }}>
+        Simple, private, slippage-free execution • AI-powered market making
+      </p>
+    </section>
+  );
 }
 
 export default CTA;

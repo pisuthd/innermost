@@ -35,7 +35,7 @@ function Footer() {
           <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: 'rgba(180,200,255,0.5)', cursor: 'pointer' }}>Terms</span>
           <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: 'rgba(180,200,255,0.5)', cursor: 'pointer' }}>Contact</span>
           <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: 'rgba(180,200,255,0.5)', margin: 0 }}>
-            © 2026 Tamago Labs Japan
+            © 2026 Innermost
           </span>
         </div>
       </div>

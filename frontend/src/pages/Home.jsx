@@ -1,7 +1,9 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Hero from '../components/home/Hero';
-import KeyFeatures from '../components/home/KeyFeatures'; 
+import AudienceSection from '../components/home/AudienceSection';
+import KeyFeatures from '../components/home/KeyFeatures';
+import RoadmapSection from '../components/home/RoadmapSection';
 import CTA from '../components/home/CTA';
 
 function Home() {
@@ -10,7 +12,9 @@ function Home() {
       <Header />
       <main className="pt-20">
         <Hero />
-        <KeyFeatures /> 
+        <AudienceSection />
+        <KeyFeatures />
+        <RoadmapSection />
         <CTA />
       </main>
       <Footer />
