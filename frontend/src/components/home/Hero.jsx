@@ -1,69 +1,113 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import SwapFlowAnimation from './SwapFlowAnimation';
+import OrbCanvas from '../OrbCanvas';
 
 function Hero() {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const orbOpacity = Math.max(0, 1 - scrollY / 400);
+
   return (
-    <section className="relative flex items-center  px-4 md:px-8 py-20 md:py-32 overflow-hidden bg-gradient-to-b from-[#0f172a] to-[#1e293b]">
-      {/* Grid Pattern Background */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.1]">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `
-            linear-gradient(rgba(62, 223, 223, 0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(62, 223, 223, 0.1) 1px, transparent 1px)
-          `,
-          backgroundSize: '50px 50px'
-        }} />
+    <section className="relative min-h-screen bg-[#0f172a] overflow-hidden">
+      {/* Fixed Animated Orbs - Right Side */}
+      <div
+        className="fixed right-0 top-0 w-1/2 h-screen"
+        style={{
+          opacity: orbOpacity,
+          transition: 'opacity 0.3s ease-out',
+          pointerEvents: orbOpacity > 0.1 ? 'auto' : 'none',
+        }}
+      >
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(to right, transparent, rgba(15,23,42,0.9))',
+          }}
+        />
+        <OrbCanvas />
       </div>
 
-      <div className="max-w-7xl mx-auto w-full relative z-10">
+      {/* Content Container */}
+      <div className="relative z-10 min-h-screen flex flex-col">
+        <div className="max-w-7xl mx-auto w-full px-6 md:px-8">
+          {/* Hero Content */}
+          <div className="flex items-center  py-24">
+            <div className="max-w-2xl">
+              {/* Pre-Headline / Live Network Badge */}
+              <div className="flex items-center gap-3 mb-6 text-[#3eddfd]">
+                <img
+                  src="https://s2.coinmarketcap.com/static/img/coins/64x64/39064.png"
+                  alt="Midnight"
+                  className="w-5 h-5 rounded-full"
+                />
+                <span style={{ fontFamily: "'Space Mono', monospace", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase' }}>
+                  Live Now On Midnight's Preprod
+                </span>
+              </div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <div className="text-left">
-            {/* Pre-Headline */}
-            <p className="mb-4 text-sm md:text-base lg:text-xl font-medium text-[#3eddfd] font-mono">
-              Shielded cross-currency stablecoin swaps on Midnight
-            </p>
+              {/* Main Headline */}
+              <h1 className="mb-6 leading-tight text-white" style={{ fontSize: '48px', fontWeight: 300, letterSpacing: '-0.02em', lineHeight: 1.1 }}>
+                Privacy-First FX Matching with AI Market Making
+              </h1>
 
-            {/* Main Headline */}
-            <h1 className="text-3xl md:text-4xl lg:text-[56px] font-bold mb-4 leading-tight text-[#f8fafc] tracking-tight">
-              Privacy-First FX Matching with AI Market Making
-            </h1>
+              {/* Subheadline */}
+              <p className="text-base mb-10 text-[rgba(180,200,255,0.6)]" style={{ fontFamily: "'DM Sans', sans-serif", lineHeight: 1.6 }}>
+                AI-powered market makers deliver optimal rates and deep liquidity — slippage-free, front-running-proof atomic execution
+              </p>
 
-            {/* Subheadline */}
-            <h2 className=" text-sm md:text-base  lg:text-[24px] mb-8   text-[#cbd5e1]  ">
-              AI-powered market makers deliver optimal rates and deep liquidity — slippage-free, front-running-proof atomic execution
-            </h2>
-            {/* CTA Buttons */}
-            <div className="flex flex-col md:flex-row gap-4 mb-12">
-              <Link
-                to="/trade"
-                className="px-8 py-4 bg-[#3eddfd] text-[#0f172a] font-semibold rounded-lg transition-all hover:bg-[#2dd4d4] hover:shadow-[0_0_30px_rgba(62,223,223,0.4)] hover:-translate-y-0.5 text-center"
-              >
-                Start Private Swap
-              </Link>
-              <Link
-                to="/market-make"
-                className="px-8 py-4 bg-[#1e293b] text-[#3eddfd] font-semibold rounded-lg transition-all hover:bg-[#334155] hover:shadow-[0_0_20px_rgba(62,223,223,0.2)] border border-[#3eddfd]/30 text-center"
-              >
-                Become a Market Maker 
-              </Link>
+              {/* CTA Buttons */}
+              <div className="flex flex-col md:flex-row gap-3">
+                <Link
+                  to="/trade"
+                  style={{
+                    padding: '12px 28px',
+                    background: '#3eddfd',
+                    border: 'none',
+                    borderRadius: 12,
+                    fontFamily: "'Space Mono', monospace",
+                    fontSize: 12,
+                    fontWeight: 700,
+                    color: '#0f172a',
+                    cursor: 'pointer',
+                    letterSpacing: '0.1em',
+                    transition: 'all 0.3s ease',
+                    textDecoration: 'none',
+                    display: 'inline-block',
+                  }}
+                >
+                  START PRIVATE SWAP
+                </Link>
+                <Link
+                  to="/market-make"
+                  style={{
+                    padding: '12px 28px',
+                    background: 'rgba(255,255,255,0.04)',
+                    backdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(180,200,255,0.12)',
+                    borderRadius: 12,
+                    fontFamily: "'Space Mono', monospace",
+                    fontSize: 12,
+                    fontWeight: 700,
+                    color: '#fff',
+                    cursor: 'pointer',
+                    letterSpacing: '0.1em',
+                    transition: 'all 0.2s',
+                    textDecoration: 'none',
+                    display: 'inline-block',
+                  }}
+                >
+                  BECOME A MARKET MAKER
+                </Link>
+              </div>
             </div>
-
-            {/* Live Network Badge */}
-            <div className="flex items-center gap-3 text-xs md:text-sm text-[#3eddfd]">
-              <img
-                src="https://s2.coinmarketcap.com/static/img/coins/64x64/39064.png"
-                alt="Midnight"
-                className="w-6 h-6 rounded-full"
-              />
-              <span className="font-medium">Live now on Midnight's Preprod network</span>
-            </div>
-          </div>
-
-          {/* Right Side - Swap Flow Animation */}
-          <div className="relative flex items-center justify-center">
-            <SwapFlowAnimation />
           </div>
         </div>
       </div>
